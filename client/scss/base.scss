@@ -1,0 +1,17 @@
+.main.grid{
+  margin: 1rem !important;
+}
+
+.hidden{
+  display: none;
+}
+
+.align-right{
+  text-align: right;
+}
+
+@media all and (max-width: 45rem){
+  .wide-only{
+    display: none;
+  }
+}
