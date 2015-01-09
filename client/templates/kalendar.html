@@ -1,25 +1,43 @@
 <template name="kalendar">
 {{>menu}}
-<table class="kalendar">
-<thead>
-  <tr>
-    <th class="empty"></th>
-    <th class="name">K</th>
-    <th class="name">K</th>
-    <th class="name">L</th>
-    <th class="name">T</th>
-  </tr>
-</thead>
-<tbody>
-{{#each days}}
-  <tr>
-    <td class="date">{{date_display}}</td>
-    <td class="box"></td>
-    <td class="box"></td>
-    <td class="box my"></td>
-    <td class="box"></td>
-  </tr>
-{{/each}}
-</tbody>
-</table>
+{{#if currentUser}}
+<div class="ui stacking three column main grid">
+  <div class="six wide column">
+    <div class="ui segment">
+      <table class="kalendar">
+        <thead>
+          <tr>
+            <th class="empty"></th>
+            <th class="name">K</th>
+            <th class="name">K</th>
+            <th class="name">L</th>
+            <th class="name">T</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each days}}
+          <tr>
+            <td class="date">{{date_display}}</td>
+            <td><div class="circular ui disabled icon button"><i class="icon save"></i></div></td>
+            <td><div class="circular ui icon green button"><i class="icon envelope"></i></div></td>
+            <td><div class="circular ui disabled icon button"><i class="icon save"></i></div></td>
+            <td><div class="circular ui disabled icon button"><i class="icon save"></i></div></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="five wide column">
+    <div class="ui segment">
+      a
+    </div>
+  </div>
+  <div class="four wide column">
+    <div class="ui segment">
+      a
+    </div>
+  </div>
+</div>
+{{/if}}
 </template>
