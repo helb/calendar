@@ -8,7 +8,6 @@ meteor-platform
 autopublish
 insecure
 accounts-password
-nooitaf:semantic-ui
 useraccounts:semantic-ui
 fourseven:scss
 iron:router
@@ -22,4 +21,4 @@ mizzao:timesync
 aldeed:autoform
 kevohagan:sweetalert
 alanning:roles
-yogiben:admin
+nooitaf:semantic-ui
