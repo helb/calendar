@@ -1,0 +1,25 @@
+<template name="kalendar">
+{{>menu}}
+<table class="kalendar">
+<thead>
+  <tr>
+    <th class="empty"></th>
+    <th class="name">K</th>
+    <th class="name">K</th>
+    <th class="name">L</th>
+    <th class="name">T</th>
+  </tr>
+</thead>
+<tbody>
+{{#each days}}
+  <tr>
+    <td class="date">{{date_display}}</td>
+    <td class="box"></td>
+    <td class="box"></td>
+    <td class="box my"></td>
+    <td class="box"></td>
+  </tr>
+{{/each}}
+</tbody>
+</table>
+</template>
