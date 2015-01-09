@@ -4,7 +4,7 @@ Messages = new Meteor.Collection("messages", {
             type: String
         },
         user: {
-            type: String
+            type: String
         },
         timestamp: {
             type: Date
@@ -13,19 +13,13 @@ Messages = new Meteor.Collection("messages", {
 });
 
 Messages.allow({
-    insert: function (userId, doc) {
+    insert: function(userId, doc) {
         return !!userId;
     },
-    update: function (userId, doc, fields, modifier) {
-        if (userId === "E3JQT68t6a7BAYYng") {
-                return true;
-        }
-        return false;
+    update: function(userId, doc, fields, modifier) {
+        return true;
     },
-    remove: function (userId, doc) {
-        if (userId === "E3JQT68t6a7BAYYng") {
-                return true;
-        }
+    remove: function(userId, doc) {
         return false;
     }
 });
