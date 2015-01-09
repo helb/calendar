@@ -1,32 +1,42 @@
 Template.chat.helpers({
-  name: function(userId){
-    return userId;
+  name: function(userId) {
+    return Meteor.users.find({_id: userId}).fetch()[0].profile.name;
   },
-  messages: function(){
-    return Messages.find({}, {sort: {timestamp: -1}});
-  },
-  date: function(timestamp){
-    return moment(timestamp).calendar();
-  }
-});
-
-Template.chat.events({
-  'keydown #chatmessage' : function(event) {
-    if (event.type === 'keydown' && event.which === 13) { // 13 == enter
-      if (event.currentTarget.value.replace(/\s/g, '').length){
-      Messages.insert({user: Meteor.user()._id, text: event.currentTarget.value, timestamp: new Date()});
-
-      // reset:
-      event.currentTarget.value = "";
-      event.currentTarget.focus();
+  messages: function() {
+    return Messages.find({}, {
+      sort: {
+        timestamp: -1
       }
+    });
+  },
+  date:   function(timestamp) {
+    return moment(timestamp).calendar();
+  },
+  color: function(userId) {
+    if (userId == "axcZ8cvRQvYnSxDLi") {
+      return "yellow";
+    } else {
+      return "teal";
+    }
+  },
+  isMyMessage: function(userId) {
+    if(Meteor.userId() == userId){
+      return true;
+    } else {
+      return false;
     }
   }
 });
 
-Template.chat.rendered = function() {
-  if(!this._rendered) {
-    this._rendered = true;
-    document.getElementById("chatmessage").placeholder="Napiš zprávu a odešli Enterem";
+Template.chat.events({
+  'click #btn-save-message': function(event) {
+    Messages.insert({
+      user:  Meteor.user()._id,
+      text: $("#frm-message").val(),
+      timestamp: new Date()
+    });
+
+    // reset:
+    $("#frm-message").val("");
   }
-}
+});
