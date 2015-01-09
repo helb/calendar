@@ -1,15 +1,21 @@
 <template name="menu">
-<div class="ui menu">
-  <a class="item" href="/kalendar">
+<div class="ui fixed top main menu">
+  <a class="item{{#if currentUser}} enabled{{else}} disabled{{/if}}{{#if activeRoute 'kalendar'}} active{{/if}}" href="/kalendar">
     <i class="calendar icon"></i> Kalendář
   </a>
-  <a class="item" href="/chat">
+  <a class="item{{#if currentUser}} enabled{{else}} disabled{{/if}}{{#if activeRoute 'chat'}} active{{/if}}" href="/chat">
     <i class="mail icon"></i> Zprávy
   </a>
+  {{#if currentUser}}
   <div class="right menu">
-      <a class="item">
-    <i class="log out icon"></i> Odhlásit se
-  </a>
+    <span class="disabled item">
+    <i class="user icon"></i>
+    {{currentUser.profile.name}}
+    </span>
+    <a class="item" id="menu-logout">
+      <i class="log out icon"></i> <span class="wide-only">Odhlásit se</span>
+    </a>
   </div>
+  {{/if}}
 </div>
 </template>
