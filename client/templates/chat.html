@@ -1,17 +1,46 @@
 <template name="chat">
-{{>menu}}
-<div id="simplechat">
-  <div id="messages">
-    {{#each messages}}
-      <div class="message chat-{{user}}">
-        <span class="username">{{name user}}</span>
-        <span class="timestamp">{{date timestamp}}</span>
-        <div class="text">{{text}}</div>
+{{> menu}}
+{{#if currentUser}}
+<div class="ui one column main grid">
+  <div class="ui column">
+    <div class="ui segment">
+      <div class="ui form">
+        <div class="ui field">
+          <textarea id="frm-message"></textarea>
+        </div>
+        <div class="align-right">
+          <button class="positive ui big button" id="btn-save-message"><i class="save icon"></i>Uložit</button>
+        </div>
       </div>
+    </div>
+  </div>
+  <div id="simplechat" class="ui column messages">
+    {{#each messages}}
+    <div class="ui raised segment chat-message">
+      <div class="header">
+        <div class="ui left ribbon {{color user}} label">
+          {{name user}}
+          <div class="detail">{{date timestamp}}</div>
+        </div>
+        {{#if isMyMessage user}}
+        <div class="message-edit-buttons">
+          <button id="btn-remove-message" data-message="{{_id}}" class="ui icon small red button">
+          <i class="trash icon"></i>
+          <span class="wide-only">Smazat</span>
+          </button>
+          <button id="btn-edit-message" data-message="{{_id}}" class="ui icon small blue button">
+          <i class="edit icon"></i>
+          <span class="wide-only">Upravit</span>
+          </button>
+        </div>
+        {{/if}}
+      </div>
+      <div class="text">
+        {{#markdown}}{{text}}{{/markdown}}
+      </div>
+    </div>
     {{/each}}
   </div>
-  <div id="input">
-    <input type="text" id="chatmessage">
-  </div>
 </div>
+{{/if}}
 </template>
