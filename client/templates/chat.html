@@ -1,0 +1,17 @@
+<template name="chat">
+{{>menu}}
+<div id="simplechat">
+  <div id="messages">
+    {{#each messages}}
+      <div class="message chat-{{user}}">
+        <span class="username">{{name user}}</span>
+        <span class="timestamp">{{date timestamp}}</span>
+        <div class="text">{{text}}</div>
+      </div>
+    {{/each}}
+  </div>
+  <div id="input">
+    <input type="text" id="chatmessage">
+  </div>
+</div>
+</template>
