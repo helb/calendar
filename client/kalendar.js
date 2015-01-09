@@ -1,5 +1,5 @@
 Template.kalendar.helpers({
-  days: function (count) {
+  days: function(count) {
     count = 30;
     var days = [];
     for (var i = 0; i < count; i++) {
