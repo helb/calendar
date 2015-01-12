@@ -1,9 +1,12 @@
-Messages = new Meteor.Collection("messages", {
+Notes = new Meteor.Collection("notes", {
     schema: new SimpleSchema({
         text: {
             type: String
         },
         user: {
+            type: String
+        },
+        day: {
             type: String
         },
         timestamp: {
@@ -16,7 +19,7 @@ Messages = new Meteor.Collection("messages", {
     })
 });
 
-Messages.allow({
+Notes.allow({
     insert: function(userId, doc) {
         return !!userId;
     },

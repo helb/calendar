@@ -1,9 +1,13 @@
-Template.chat.helpers({
+Template.messages.helpers({
   name: function(userId) {
-    return Meteor.users.find({_id: userId}).fetch()[0].profile.name;
+    return nameFromId(userId);
   },
   messages: function() {
-    return Messages.find({}, {
+    return Messages.find({
+      visible: {
+        $ne: false
+      }
+    }, {
       sort: {
         timestamp: -1
       }
@@ -20,7 +24,7 @@ Template.chat.helpers({
     }
   },
   isMyMessage: function(userId) {
-    if(Meteor.userId() == userId){
+    if (Meteor.userId() == userId) {
       return true;
     } else {
       return false;
@@ -28,7 +32,7 @@ Template.chat.helpers({
   }
 });
 
-Template.chat.events({
+Template.messages.events({
   'click #btn-save-message': function(event) {
     Messages.insert({
       user:  Meteor.user()._id,
@@ -38,5 +42,16 @@ Template.chat.events({
 
     // reset:
     $("#frm-message").val("");
+  },
+
+  'click .btn-remove-message': function(event) {
+    var id = event.currentTarget.attributes['data-message'].value;
+    Messages.update({
+      _id: id
+    }, {
+      $set:  {
+        visible:  false
+      }
+    });
   }
 });

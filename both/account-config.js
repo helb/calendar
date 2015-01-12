@@ -1,4 +1,4 @@
 AccountsTemplates.configure({
-    forbidClientAccountCreation: true,
+    // forbidClientAccountCreation: true,
     continuousValidation: true,
 });

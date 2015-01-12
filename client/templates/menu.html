@@ -1,10 +1,10 @@
 <template name="menu">
-<div class="ui fixed top main menu">
-  <a class="item{{#if currentUser}} enabled{{else}} disabled{{/if}}{{#if activeRoute 'kalendar'}} active{{/if}}" href="/kalendar">
+<div class="ui fixed top main inverted menu">
+  <a class="item{{#if currentUser}} enabled{{else}} disabled{{/if}}{{#if activeRoute 'calendar'}} active{{/if}}" href="/calendar">
     <i class="calendar icon"></i> Kalendář
   </a>
-  <a class="item{{#if currentUser}} enabled{{else}} disabled{{/if}}{{#if activeRoute 'chat'}} active{{/if}}" href="/chat">
-    <i class="mail icon"></i> Zprávy
+  <a class="item{{#if currentUser}} enabled{{else}} disabled{{/if}}{{#if activeRoute 'messages'}} active{{/if}}" href="/messages">
+    <i class="write icon"></i> Vzkazy
   </a>
   {{#if currentUser}}
   <div class="right menu">

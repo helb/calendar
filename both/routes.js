@@ -2,10 +2,14 @@ Router.route('/login', function () {
   this.render('login');
 });
 
-Router.route('/chat', function () {
-  this.render('chat');
+Router.route('/messages', function () {
+  this.render('messages');
 });
 
-Router.route('/kalendar', function () {
-  this.render('kalendar');
+Router.route('/calendar', function () {
+  this.render('calendar');
+});
+
+Router.route('/', function () {
+  Router.go('calendar');
 });

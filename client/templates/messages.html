@@ -1,15 +1,15 @@
-<template name="chat">
+<template name="messages">
 {{> menu}}
 {{#if currentUser}}
-<div class="ui one column main grid">
+<div class="ui one column page grid">
   <div class="ui column">
     <div class="ui segment">
       <div class="ui form">
-        <div class="ui field">
+        <div class="ui fluid field">
           <textarea id="frm-message"></textarea>
         </div>
         <div class="align-right">
-          <button class="positive ui big button" id="btn-save-message"><i class="save icon"></i>Uložit</button>
+          <button class="positive ui big button" id="btn-save-message"><i class="save icon"></i>Uložit vzkaz</button>
         </div>
       </div>
     </div>
@@ -24,14 +24,14 @@
         </div>
         {{#if isMyMessage user}}
         <div class="message-edit-buttons">
-          <button id="btn-remove-message" data-message="{{_id}}" class="ui icon small red button">
+          <button data-message="{{_id}}" class="ui icon small red button btn-remove-message">
           <i class="trash icon"></i>
           <span class="wide-only">Smazat</span>
           </button>
-          <button id="btn-edit-message" data-message="{{_id}}" class="ui icon small blue button">
+{{!--           <button id="btn-edit-message" data-message="{{_id}}" class="ui icon small blue button">
           <i class="edit icon"></i>
           <span class="wide-only">Upravit</span>
-          </button>
+          </button> --}}
         </div>
         {{/if}}
       </div>
