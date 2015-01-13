@@ -13,7 +13,6 @@ Router.route('/change-password', function() {
     this.render('change-password');
 });
 
-
 Router.route('/messages', function() {
     onBeforeAction: requireLogin();
     this.render('messages');

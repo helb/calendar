@@ -29,10 +29,10 @@ table.calendar{
       text-align: right;
       max-width: 6rem;
 
-      & button{
-        text-align: right !important;
-        white-space: nowrap;
-      }
+      // & button{
+      //   text-align: right !important;
+      //   white-space: nowrap;
+      // }
     }
 
     &.status{
