@@ -8,6 +8,7 @@ Template.user_settings.helpers({
 
 Template.user_settings.rendered = function() {
     $("input.checked").prop('checked', true);
+    $("#at-btn").val("Uložit nové heslo");
 }
 
 Template.user_settings.events({

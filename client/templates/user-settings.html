@@ -9,16 +9,22 @@
     <div class="ui eight wide column">
         <div class="ui large fluid segment">
             {{#with currentUser}}
-            <h2 class="ui center aligned dividing header">Barva pozadí u zpráv</h2>
+            <h2 class="ui center aligned dividing header">Barva pozadí</h2>
+            <p>Barva pozadí jména u zpráv a poznámek:</p>
+
                 <button class="ui black button btn-change-color">{{currentUser.profile.name}}</button>
                 <button class="ui yellow button btn-change-color">{{currentUser.profile.name}}</button>
                 <button class="ui green button btn-change-color">{{currentUser.profile.name}}</button>
+                <button class="ui teal button btn-change-color">{{currentUser.profile.name}}</button>
                 <button class="ui blue button btn-change-color">{{currentUser.profile.name}}</button>
-                <button class="ui orange button btn-change-color">{{currentUser.profile.name}}</button>
                 <button class="ui purple button btn-change-color">{{currentUser.profile.name}}</button>
+                <button class="ui orange button btn-change-color">{{currentUser.profile.name}}</button>
                 <button class="ui red button btn-change-color">{{currentUser.profile.name}}</button>
                 <button class="ui pink button btn-change-color">{{currentUser.profile.name}}</button>
-                <button class="ui teal button btn-change-color">{{currentUser.profile.name}}</button>
+                <button class="ui youtube button btn-change-color">{{currentUser.profile.name}}</button>
+
+
+
 
             <h2 class="ui center aligned dividing header">Kalendář</h2>
                 <input type="checkbox" id="check-calendar" class="{{#if userHasCalendar _id}} checked{{/if}}">
