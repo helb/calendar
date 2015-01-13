@@ -1,21 +1,21 @@
 <template name="menu">
 <div class="ui fixed top main inverted menu">
-  <a class="item{{#if currentUser}} enabled{{else}} disabled{{/if}}{{#if activeRoute 'calendar'}} active{{/if}}" href="/calendar">
-    <i class="calendar icon"></i> Kalendář
-  </a>
-  <a class="item{{#if currentUser}} enabled{{else}} disabled{{/if}}{{#if activeRoute 'messages'}} active{{/if}}" href="/messages">
-    <i class="write icon"></i> Vzkazy
-  </a>
-  {{#if currentUser}}
-  <div class="right menu">
-    <a class="item" id="menu-user" title="Změnit heslo">
-        <i class="user icon"></i>
-        {{currentUser.profile.name}}
+    <a class="item{{#if currentUser}} enabled{{else}} disabled{{/if}}{{#if activeRoute 'calendar'}} active{{/if}}" href="/calendar">
+        <i class="calendar icon"></i> Kalendář
     </a>
-    <a class="item" id="menu-logout">
-      <i class="log out icon"></i> <span class="wide-only">Odhlásit se</span>
+    <a class="item{{#if currentUser}} enabled{{else}} disabled{{/if}}{{#if activeRoute 'messages'}} active{{/if}}" href="/messages">
+        <i class="write icon"></i> Vzkazy
     </a>
-  </div>
-  {{/if}}
+    {{#if currentUser}}
+    <div class="right menu">
+        <a class="item" id="menu-user" title="Změnit heslo">
+            <i class="user icon"></i>
+            {{currentUser.profile.name}}
+        </a>
+        <a class="item" id="menu-logout">
+            <i class="log out icon"></i> <span class="wide-only">Odhlásit se</span>
+        </a>
+    </div>
+    {{/if}}
 </div>
 </template>

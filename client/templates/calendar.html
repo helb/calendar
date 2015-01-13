@@ -1,142 +1,142 @@
 <template name="calendar">
 <head>
-  <title>test app</title>
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+    <title>test app</title>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
 </head>
 {{>menu}}
-<div class="ui one column page grid">
-  <div class="ui sixteen wide column">
-    <div class="ui attached segment">
-      <table class="ui unstackable table calendar">
-        <thead>
-          <tr>
-            <th class="empty"></th>
-            {{#each calendarUsers}}
-            <th class="name">{{profile.name}}</th>
-            {{/each}}
-          </tr>
-        </thead>
-        <tbody>
-          {{#each days}}
-          <tr data-date="{{date}}" class="{{#if weekend}} weekend{{/if}}">
-            <td class="date">
-              <button class="ui icon only small {{#if weekend}}red{{else}}teal{{/if}} button btn-day">
-                <i class="mail {{#if hasNotes}}{{else}}outline disabled{{/if}} icon"></i>
-                <span class="wide-only">{{day_name}}</span>
-                <span class="narrow-only">{{day_short}}</span>
-                {{date_display}}
-              </button>
-            </td>
-            {{#each calendarUsers}}
-            <td class="status"><div data-user="{{_id}}" class="circular ui{{#if willCome _id ../date}} green{{/if}}{{#if isMyColumn _id}} huge icon button btn-enable{{else}} label{{/if}}"></div></td>
-            {{/each}}
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
+<div class="ui centered grid">
+    <div class="ui column">
+        <div class="ui attached segment">
+            <table class="ui unstackable table calendar">
+                <thead>
+                    <tr>
+                        <th class="empty"></th>
+                        {{#each calendarUsers}}
+                        <th class="name">{{profile.name}}</th>
+                        {{/each}}
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each days}}
+                    <tr data-date="{{date}}" class="{{#if weekend}} weekend{{/if}}">
+                        <td class="date">
+                            <button class="ui icon only small {{#if weekend}}red{{else}}teal{{/if}} button btn-day">
+                            <i class="mail {{#if hasNotes}}{{else}}outline disabled{{/if}} icon"></i>
+                            <span class="wide-only">{{day_name}}</span>
+                            <span class="narrow-only">{{day_short}}</span>
+                            {{date_display}}
+                            </button>
+                        </td>
+                        {{#each calendarUsers}}
+                        <td class="status"><div data-user="{{_id}}" class="circular ui{{#if willCome _id ../date}} green{{/if}}{{#if isMyColumn _id}} huge icon button btn-enable{{else}} label{{/if}}"></div></td>
+                        {{/each}}
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <button id="btn-more-days" class="ui bottom attached green big fluid icon button"><i class="ui angle double down icon"></i> Dalších 10 dnů <i class="ui angle double down icon"></i></button>
     </div>
-    <button id="btn-more-days" class="ui bottom attached green big fluid icon button"><i class="ui angle double down icon"></i> Dalších 10 dnů <i class="ui angle double down icon"></i></button>
-  </div>
-  {{!--   <div class="five wide column">
-    <div class="ui segment">
-    </div>
-    <div class="ui segment">
-      <div class="ui header">Přidat:</div>
-      <div class="ui styled fluid accordion">
-        <div class="title">
-          <i class="dropdown icon"></i>
-          Datum
+    {{!--   <div class="five wide column">
+        <div class="ui segment">
         </div>
-        <div class="content">
-          <div class="ui form">
-            <div class="ui field">
-              <label>Datum:</label>
-              <input type="date" name="frm-date" class="datepicker" />
+        <div class="ui segment">
+            <div class="ui header">Přidat:</div>
+            <div class="ui styled fluid accordion">
+                <div class="title">
+                    <i class="dropdown icon"></i>
+                    Datum
+                </div>
+                <div class="content">
+                    <div class="ui form">
+                        <div class="ui field">
+                            <label>Datum:</label>
+                            <input type="date" name="frm-date" class="datepicker" />
+                        </div>
+                        <!--             <div class="ui fluid field">
+                            <label>Poznámka:</label>
+                            <textarea id="frm-note"></textarea>
+                        </div>
+                        -->            <div class="align-right">
+                            <button class="positive ui button" id="btn-save-day"><i class="checkmark icon"></i> Přijdu</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="title">
+                    <i class="dropdown icon"></i>
+                    Rozsah
+                </div>
+                <div class="content">
+                    <div class="ui form">
+                        <div class="ui field">
+                            <label>Od:</label>
+                            <input type="date" name="frm-date-from" class="datepicker" />
+                        </div>
+                        <div class="ui field">
+                            <label>Do:</label>
+                            <input type="date" name="frm-date-to" class="datepicker" />
+                        </div>
+                        <div class="align-right">
+                            <button class="positive ui button" id="btn-save-day"><i class="checkmark icon"></i> Přijdu</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="title">
+                    <i class="dropdown icon"></i>
+                    Dny v týdnu
+                </div>
+                <div class="content">
+                    <div class="ui divided list">
+                        {{#each weekdays}}
+                        <div class="item">
+                            <button data-day-enable="{{number}}" class="ui tiny positive icon left attached button"><i class="checkmark icon"></i> Přijdu</button>
+                            <button data-day-disable="{{number}}" class="ui tiny icon right attached button"><i class="delete icon"></i></button>
+                            &nbsp;{{day}}
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
             </div>
-            <!--             <div class="ui fluid field">
-              <label>Poznámka:</label>
-              <textarea id="frm-note"></textarea>
-            </div>
-            -->            <div class="align-right">
-              <button class="positive ui button" id="btn-save-day"><i class="checkmark icon"></i> Přijdu</button>
-            </div>
-          </div>
         </div>
-        <div class="title">
-          <i class="dropdown icon"></i>
-          Rozsah
-        </div>
-        <div class="content">
-          <div class="ui form">
-            <div class="ui field">
-              <label>Od:</label>
-              <input type="date" name="frm-date-from" class="datepicker" />
-            </div>
-            <div class="ui field">
-              <label>Do:</label>
-              <input type="date" name="frm-date-to" class="datepicker" />
-            </div>
-            <div class="align-right">
-              <button class="positive ui button" id="btn-save-day"><i class="checkmark icon"></i> Přijdu</button>
-            </div>
-          </div>
-        </div>
-        <div class="title">
-          <i class="dropdown icon"></i>
-          Dny v týdnu
-        </div>
-        <div class="content">
-          <div class="ui divided list">
-            {{#each weekdays}}
-            <div class="item">
-              <button data-day-enable="{{number}}" class="ui tiny positive icon left attached button"><i class="checkmark icon"></i> Přijdu</button>
-              <button data-day-disable="{{number}}" class="ui tiny icon right attached button"><i class="delete icon"></i></button>
-              &nbsp;{{day}}
-            </div>
-            {{/each}}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> --}}
+    </div> --}}
 </div>
 <div class="ui modal" id="msg-modal">
-  <i class="close icon"></i>
-  <div class="header" id="msg-modal-day">
-  </div>
-  <div class="content">
-    <div class="ui segment">
-      <div class="ui form">
-        <div class="ui fluid field">
-          <textarea id="frm-note"></textarea>
-        </div>
-        <div class="align-right">
-          <button class="green ui button" id="btn-save-note"><i class="save icon"></i>Uložit poznámku</button>
-        </div>
-      </div>
+    <i class="close icon"></i>
+    <div class="header" id="msg-modal-day">
     </div>
-    {{#each modalDateNotes}}
-    <div class="ui raised segment chat-message">
-      <div class="header">
-        <div class="ui left label">
-          {{noteName user}}
+    <div class="content">
+        <div class="ui segment">
+            <div class="ui form">
+                <div class="ui fluid field">
+                    <textarea id="frm-note"></textarea>
+                </div>
+                <div class="align-right">
+                    <button class="green ui button" id="btn-save-note"><i class="save icon"></i>Uložit poznámku</button>
+                </div>
+            </div>
         </div>
-        {{#if isMyNote user}}
-        <div class="message-edit-buttons">
-          <button data-note="{{_id}}" class="ui icon small red button btn-remove-note">
-          <i class="trash icon"></i>
-          <span class="wide-only">Smazat</span>
-          </button>
+        {{#each modalDateNotes}}
+        <div class="ui raised segment chat-message">
+            <div class="header">
+                <div class="ui left label">
+                    {{noteName user}}
+                </div>
+                {{#if isMyNote user}}
+                <div class="message-edit-buttons">
+                    <button data-note="{{_id}}" class="ui icon small red button btn-remove-note">
+                    <i class="trash icon"></i>
+                    <span class="wide-only">Smazat</span>
+                    </button>
+                </div>
+                {{/if}}
+            </div>
+            <div class="text">
+                {{#markdown}}{{text}}{{/markdown}}
+            </div>
         </div>
-        {{/if}}
-      </div>
-      <div class="text">
-        {{#markdown}}{{text}}{{/markdown}}
-      </div>
+        {{/each}}
     </div>
-    {{/each}}
-  </div>
 </div>
 </template>
