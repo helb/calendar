@@ -1,87 +1,83 @@
 table.calendar{
-  border-spacing: 0rem;
-  border-collapse: collapse;
-  table-layout: fixed;
+    border-spacing: 0rem;
+    border-collapse: collapse;
+    table-layout: fixed;
 
-  & .wide-col{
-    width: 12rem;
-  }
-
-  & tr{
-    background-color: #ffffff;
-
-    &.weekend td{
-      background-color: #fefff4;
-    }
-  }
-
-  & td,
-  & th{
-    cursor: default !important;
-    padding: 0.5rem;
-    margin: 0.15rem;
-    text-align: left;
-
-    &.name{
-      text-align: center;
-      // max-width: 3rem;
-      white-space: nowrap;
+    & .wide-col{
+        width: 12rem;
     }
 
-    &.date{
-      text-align: right;
+    & tr{
+        background-color: #ffffff;
 
-      & .btn-day{
-        text-align: right;
-        white-space: nowrap;
-      }
+        &.weekend td{
+            background-color: #fefff4;
+        }
     }
 
-    &.status{
-      text-align: center;
+    & td,
+    & th{
+        cursor: default !important;
+        padding: 0.5rem;
+        margin: 0.15rem;
+        text-align: left;
+
+        &.name{
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        &.date{
+            text-align: right;
+
+            & .btn-day{
+                text-align: right;
+                white-space: nowrap;
+            }
+        }
+
+        &.status{
+            text-align: center;
+        }
     }
-  }
 }
 
 @media all and (max-width: 768px){
-.calendar-container{
-    padding: 0 !important;
-    border: none !important;
-}
-
-table.calendar{
-    & .wide-col{
-    width: 8rem;
-  }
-
-      & thead tr{
-
-    & th{
-        vertical-align: middle !important;
-        & div{
-        background-color: transparent !important;
-       -moz-transform: rotate(-90deg);  /* FF3.5+ */
-       -o-transform: rotate(-90deg);  /* Opera 10.5 */
-       -webkit-transform: rotate(-90deg);  /* Saf3.1+, Chrome */
-       filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=3);  /* IE6,IE7 */
-       -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)"; /* IE8 */
-       padding: 0 !important;
-       width: 1rem !important;
-       margin: 4rem auto 0 auto !important;
-   }
-      }
-    }
-
-    td.status{
+    .calendar-container{
         padding: 0 !important;
+        border: none !important;
     }
 
-    td.date .btn-day{
-        margin-right: 0 !important;
-    }
+    table.calendar{
+        & .wide-col{
+            width: 8rem;
+        }
 
-    td.date .btn-day span{
-        margin-left: -1rem;
+        & thead tr th{
+            vertical-align: middle !important;
+            & div{
+                background-color: transparent !important;
+                -moz-transform: rotate(-90deg);  /* FF3.5+ */
+                -o-transform: rotate(-90deg);  /* Opera 10.5 */
+                -webkit-transform: rotate(-90deg);  /* Saf3.1+, Chrome */
+                filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=3);  /* IE6,IE7 */
+                -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)"; /* IE8 */
+                padding: 0 !important;
+                width: 1rem !important;
+                margin: 4rem auto 0 auto !important;
+            }
+        }
+
+        td.status{
+            padding: 0 !important;
+        }
+
+        td.date .btn-day{
+            margin-right: 0 !important;
+        }
+
+        td.date .btn-day span{
+            margin-left: -1rem;
+        }
     }
-}
 }

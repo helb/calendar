@@ -3,21 +3,21 @@ body{
 }
 
 .hidden{
-  display: none;
+    display: none;
 }
 
 .align-right{
-  text-align: right;
+    text-align: right;
 }
 
 @media all and (max-width: 768px){
-  .wide-only{
-    display: none;
-  }
+    .wide-only{
+        display: none;
+    }
 }
 
 @media all and (min-width: 769px){
-  .narrow-only{
-    display: none;
-  }
+    .narrow-only{
+        display: none;
+    }
 }
