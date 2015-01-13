@@ -1,15 +1,28 @@
-Router.route('/login', function () {
-  this.render('login');
+requireLogin = function() {
+    if (!Meteor.userId()) {
+        Router.go('login');
+    }
+}
+
+Router.route('/login', function() {
+    this.render('login');
 });
 
-Router.route('/messages', function () {
-  this.render('messages');
+Router.route('/change-password', function() {
+    this.render('change-password');
 });
 
-Router.route('/calendar', function () {
-  this.render('calendar');
+
+Router.route('/messages', function() {
+    onBeforeAction: requireLogin();
+    this.render('messages');
 });
 
-Router.route('/', function () {
-  Router.go('calendar');
+Router.route('/calendar', function() {
+    onBeforeAction: requireLogin();
+    this.render('calendar');
+});
+
+Router.route('/', function() {
+    Router.go('calendar');
 });
