@@ -1,3 +1,7 @@
+body{
+    font-family: 'Open Sans', sans-serif !important;
+}
+
 .hidden{
   display: none;
 }
@@ -6,13 +10,13 @@
   text-align: right;
 }
 
-@media all and (max-width: 55rem){
+@media all and (max-width: 768px){
   .wide-only{
     display: none;
   }
 }
 
-@media all and (min-width: 55rem){
+@media all and (min-width: 769px){
   .narrow-only{
     display: none;
   }
