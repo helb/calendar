@@ -1,0 +1,24 @@
+<template name="user_settings">
+{{> menu }}
+<div class="ui one column stackable page grid">
+    <div class="ui eight wide column">
+        <nav class="login-form">
+            {{> atForm state='changePwd'}}
+        </nav>
+    </div>
+    <div class="ui eight wide column">
+        <div class="ui large fluid segment">
+            <h2 class="ui center aligned dividing header">Barva pozadí u zpráv</h2>
+            <button class="ui black button btn-change-color">{{currentUser.profile.name}}</button>
+            <button class="ui yellow button btn-change-color">{{currentUser.profile.name}}</button>
+            <button class="ui green button btn-change-color">{{currentUser.profile.name}}</button>
+            <button class="ui blue button btn-change-color">{{currentUser.profile.name}}</button>
+            <button class="ui orange button btn-change-color">{{currentUser.profile.name}}</button>
+            <button class="ui purple button btn-change-color">{{currentUser.profile.name}}</button>
+            <button class="ui red button btn-change-color">{{currentUser.profile.name}}</button>
+            <button class="ui pink button btn-change-color">{{currentUser.profile.name}}</button>
+            <button class="ui teal button btn-change-color">{{currentUser.profile.name}}</button>
+        </div>
+    </div>
+</div>
+</template>

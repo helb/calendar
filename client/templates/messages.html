@@ -18,8 +18,8 @@
     {{#each messages}}
     <div class="ui raised segment chat-message">
       <div class="header">
-        <div class="ui left ribbon {{color user}} label">
-          {{name user}}
+        <div class="ui left ribbon {{messageNameColor user}} label">
+          {{messageName user}}
           <div class="detail">{{date timestamp}}</div>
         </div>
         {{#if isMyMessage user}}

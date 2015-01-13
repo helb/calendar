@@ -15,6 +15,6 @@ Template.menu.events({
     },
 
     'click #menu-user': function(event) {
-        Router.go('change-password');
+        Router.go('user-settings');
     }
 });

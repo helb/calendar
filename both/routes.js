@@ -8,9 +8,9 @@ Router.route('/login', function() {
     this.render('login');
 });
 
-Router.route('/change-password', function() {
+Router.route('/user-settings', function() {
     onBeforeAction: requireLogin();
-    this.render('change-password');
+    this.render('user_settings');
 });
 
 Router.route('/messages', function() {
