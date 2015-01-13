@@ -9,6 +9,7 @@ Router.route('/login', function() {
 });
 
 Router.route('/change-password', function() {
+    onBeforeAction: requireLogin();
     this.render('change-password');
 });
 
