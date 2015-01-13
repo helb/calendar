@@ -8,10 +8,10 @@
   </a>
   {{#if currentUser}}
   <div class="right menu">
-    <span class="disabled item">
-    <i class="user icon"></i>
-    {{currentUser.profile.name}}
-    </span>
+    <a class="item" id="menu-user" title="Změnit heslo">
+        <i class="user icon"></i>
+        {{currentUser.profile.name}}
+    </a>
     <a class="item" id="menu-logout">
       <i class="log out icon"></i> <span class="wide-only">Odhlásit se</span>
     </a>
