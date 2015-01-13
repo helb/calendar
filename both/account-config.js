@@ -1,5 +1,5 @@
 AccountsTemplates.configure({
-    // forbidClientAccountCreation: true,
+    forbidClientAccountCreation: true,
     continuousValidation: true,
     enablePasswordChange: true,
     texts: {
