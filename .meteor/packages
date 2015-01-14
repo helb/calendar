@@ -11,14 +11,10 @@ useraccounts:semantic-ui
 fourseven:scss
 iron:router
 accounts-ui
-service-configuration
 aldeed:simple-schema
 markdown
 momentjs:moment
 rzymek:moment-locale-cs
 mizzao:timesync
 aldeed:autoform
-kevohagan:sweetalert
-alanning:roles
 nooitaf:semantic-ui
-sayawan:pickadate
