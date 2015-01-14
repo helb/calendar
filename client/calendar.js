@@ -146,15 +146,19 @@ Template.calendar.events({
     },
 
     "click .btn-enable": function(event) {
-        var userId = event.currentTarget.attributes["data-user"].value;
-        var date = event.currentTarget.parentNode.parentNode.attributes["data-date"].value;
-        if (event.currentTarget.classList.contains("green")) {
+        var button = event.currentTarget;
+        button.classList.add("loading");
+        var userId = button.attributes["data-user"].value;
+        var date = button.parentNode.parentNode.attributes["data-date"].value;
+        if (button.classList.contains("green")) {
             Meteor.users.update({
                 _id: userId
             }, {
                 $pull: {
                     "profile.days": date
                 }
+            }, function() {
+                button.classList.remove("loading");
             });
         } else {
             Meteor.users.update({
@@ -163,6 +167,8 @@ Template.calendar.events({
                 $push: {
                     "profile.days": date
                 }
+            }, function() {
+                button.classList.remove("loading");
             });
         }
     },
