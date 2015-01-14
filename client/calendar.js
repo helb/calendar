@@ -142,6 +142,7 @@ Template.calendar.rendered = function() {
             day: Session.get("modalDate")
         }, function() {
             button.removeClass("loading");
+            $("#frm-note").val("");
         });
     });
 };
