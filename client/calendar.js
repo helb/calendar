@@ -1,18 +1,5 @@
 Session.set("dayCount", 10);
 
-function attachRemoveButtons() {
-    $(".btn-remove-note").click(function() {
-        var id = $(this).attr("data-note");
-        Notes.update({
-            _id: id
-        }, {
-            $set:  {
-                visible:  false
-            }
-        });
-    });
-}
-
 Template.calendar.helpers({
     days: function() {
         var count = Session.get("dayCount");
@@ -130,21 +117,28 @@ Template.calendar.helpers({
     }
 });
 
-/*Template.calendar.rendered = function() {
-    // jQuery.extend(jQuery.fn.pickadate.defaults, {
-    //     monthsFull: ["leden", "únor", "březen", "duben", "květen", "červen", "červenec", "srpen", "září", "říjen", "listopad", "prosinec"],
-    //     monthsShort: ["led", "úno", "bře", "dub", "kvě", "čer", "čvc", "srp", "zář", "říj", "lis", "pro"],
-    //     weekdaysFull: ["neděle", "pondělí", "úterý", "středa", "čtvrtek", "pátek", "sobota"],
-    //     weekdaysShort: ["ne", "po", "út", "st", "čt", "pá", "so"],
-    //     today: "dnes",
-    //     clear: "vymazat",
-    //     firstDay: 1,
-    //     format: "d. mmmm yyyy",
-    //     formatSubmit: "yyyy/mm/dd"
-    // });
-    // $(".ui.accordion").accordion();
-    // $(".datepicker").pickadate();
-};*/
+Template.calendar.rendered = function() {
+    $('body').on('click', 'button.btn-remove-note', function() {
+        var id = $(this).attr("data-note");
+        Notes.update({
+            _id: id
+        }, {
+            $set:  {
+                visible:  false
+            }
+        });
+    });
+
+    $('body').on('click', 'button#btn-save-note', function() {
+        Notes.insert({
+            user:  Meteor.user()._id,
+            text: $("#frm-note").val(),
+            day: Session.get("modalDate")
+        }, function() {
+            $("#frm-note").val("")
+        });
+    });
+};
 
 Template.calendar.events({
     "click #btn-more-days": function(event) {
@@ -178,28 +172,6 @@ Template.calendar.events({
         Session.set("modalDate", date);
         var day = moment(date).format("dddd D[.]M[.]YYYY");
         $("#msg-modal-day").text(day);
-        $("#msg-modal").modal({
-            closable: false,
-            onDeny: function() {
-                return false;
-            },
-            onApprove: function() {
-                return false;
-            }
-        }).modal("show");
-
-        $("#btn-save-note").click(function() {
-            Notes.insert({
-                user:  Meteor.user()._id,
-                text: $("#frm-note").val(),
-                day: Session.get("modalDate")
-            }, function() {
-                $("#frm-note").val("")
-            });
-
-            attachRemoveButtons();
-        });
-
-        attachRemoveButtons();
+        $("#msg-modal").modal("show");
     }
 });
