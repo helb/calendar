@@ -121,7 +121,9 @@ Template.calendar.helpers({
 
 Template.calendar.rendered = function() {
     $('body').on('click', 'button.btn-remove-note', function() {
-        var id = $(this).attr("data-note");
+        var button = $(this);
+        button.addClass("loading");
+        var id = button.attr("data-note");
         Notes.update({
             _id: id
         }, {
@@ -132,12 +134,14 @@ Template.calendar.rendered = function() {
     });
 
     $('body').on('click', 'button#btn-save-note', function() {
+        var button = $(this);
+        button.addClass("loading");
         Notes.insert({
             user:  Meteor.user()._id,
             text: $("#frm-note").val(),
             day: Session.get("modalDate")
         }, function() {
-            $("#frm-note").val("");
+            button.removeClass("loading");
         });
     });
 };
