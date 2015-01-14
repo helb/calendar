@@ -137,7 +137,7 @@ Template.calendar.rendered = function() {
             text: $("#frm-note").val(),
             day: Session.get("modalDate")
         }, function() {
-            $("#frm-note").val("")
+            $("#frm-note").val("");
         });
     });
 };
