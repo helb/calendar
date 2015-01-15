@@ -16,7 +16,7 @@ Template.messages.helpers({
             }
         });
     },
-    date:   function(timestamp) {
+    date: function(timestamp) {
         return moment(timestamp).calendar();
     },
     color: function(userId) {
@@ -37,18 +37,22 @@ Template.messages.helpers({
 
 Template.messages.events({
     'click #btn-save-message': function(event) {
+        var button = event.currentTarget;
+        button.classList.add("loading");
         Messages.insert({
             user:  Meteor.user()._id,
             text: $("#frm-message").val(),
             timestamp: new Date()
+        }, function() {
+            button.classList.remove("loading");
+            $("#frm-message").val("");
         });
-
-        // reset:
-        $("#frm-message").val("");
     },
 
     'click .btn-remove-message': function(event) {
-        var id = event.currentTarget.attributes['data-message'].value;
+        var button = event.currentTarget;
+        button.classList.add("loading");
+        var id = button.attributes['data-message'].value;
         Messages.update({
             _id: id
         }, {

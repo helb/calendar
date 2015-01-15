@@ -15,9 +15,9 @@
   </div>
   <div id="simplechat" class="ui column messages">
     {{#each messages}}
-    <div class="ui raised segment chat-message">
+    <div class="ui raised {{messageNameColor user}} segment chat-message">
       <div class="header">
-        <div class="ui left ribbon {{messageNameColor user}} label">
+        <div class="ui left {{messageNameColor user}} label">
           {{messageName user}}
           <div class="detail">{{date timestamp}}</div>
         </div>
