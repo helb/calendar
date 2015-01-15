@@ -1,15 +1,15 @@
-if (typeof(Session.get("notesDate")) == "undefined") {
-    var urlDay = window.location.hash.substr(1);
-    if (/^\d{4}-\d{2}-\d{2}$/.test(urlDay)) {
-        Session.set("notesDate", urlDay);
-    } else {
-        Session.set("notesDate", moment().format("YYYY-MM-DD"));
-        window.location.hash = Session.get("notesDate");
+Template.notes.created = function() {
+    if (typeof(Session.get("notesDate")) == "undefined") {
+        var urlDay = window.location.hash.substr(1);
+        if (/^\d{4}-\d{2}-\d{2}$/.test(urlDay)) {
+            Session.set("notesDate", urlDay);
+        } else {
+            Session.set("notesDate", moment().format("YYYY-MM-DD"));
+        }
     }
-}
 
-Template.notes.rendered = function() {
-    window.location.hash = Session.get("notesDate");
+    var baseUrl = window.location.href.split('#')[0];
+    window.location.replace(baseUrl + '#' + Session.get("notesDate"));
 };
 
 Template.notes.helpers({
@@ -42,9 +42,9 @@ Template.notes.helpers({
         }
     },
     date: function(timestamp) {
-        if(timestamp){
+        if (timestamp) {
             return moment(timestamp).calendar();
-        } else {
+        } else  {
             return null;
         }
     },
@@ -78,5 +78,10 @@ Template.notes.events({
         }, function() {
             button.classList.remove("loading");
         });
+    },
+
+    "click #btn-back-to-calendar": function(event) {
+        Router.go("calendar")
     }
+
 });

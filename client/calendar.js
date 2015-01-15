@@ -1,6 +1,10 @@
-if (typeof(Session.get("dayCount")) == "undefined") {
-    Session.set("dayCount", 10);
-}
+Template.calendar.created = function() {
+    if (typeof(Session.get("dayCount")) == "undefined") {
+        Session.set("dayCount", 10);
+    }
+
+    window.location.hash = "";
+};
 
 Template.calendar.helpers({
     days: function() {
