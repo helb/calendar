@@ -42,7 +42,11 @@ Template.notes.helpers({
         }
     },
     date: function(timestamp) {
-        return moment(timestamp).calendar();
+        if(timestamp){
+            return moment(timestamp).calendar();
+        } else {
+            return null;
+        }
     },
 });
 
