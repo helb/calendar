@@ -23,6 +23,11 @@ Router.route('/calendar', function() {
     this.render('calendar');
 });
 
+Router.route('/notes', function() {
+    onBeforeAction: requireLogin();
+    this.render('notes');
+});
+
 Router.route('/', function() {
     Router.go('calendar');
 });

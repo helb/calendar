@@ -91,65 +91,17 @@ Template.calendar.helpers({
                 "profile.name": 1
             }
         }).fetch();
-    },
-    modalDateNotes: function() {
-        return Notes.find({
-            "day": Session.get("modalDate"),
-            "visible": {
-                $ne: false
-            }
-        }, {
-            sort:  {
-                timestamp: -1
-            }
-        });
-    },
-    noteName: function(userId) {
-        return nameFromId(userId);
-    },
-    noteNameColor: function(userId) {
-        return userColorFromId(userId);
-    },
-    isMyNote: function(userId) {
-        if (Meteor.userId() == userId) {
-            return true;
-        } else {
-            return false;
-        }
     }
 });
 
-Template.calendar.rendered = function() {
-    $('body').on('click', 'button.btn-remove-note', function() {
-        var button = $(this);
-        button.addClass("loading");
-        var id = button.attr("data-note");
-        Notes.update({
-            _id: id
-        }, {
-            $set:  {
-                visible:  false
-            }
-        });
-    });
-
-    $('body').on('click', 'button#btn-save-note', function() {
-        var button = $(this);
-        button.addClass("loading");
-        Notes.insert({
-            user:  Meteor.user()._id,
-            text: $("#frm-note").val(),
-            day: Session.get("modalDate")
-        }, function() {
-            button.removeClass("loading");
-            $("#frm-note").val("");
-        });
-    });
-};
-
 Template.calendar.events({
     "click #btn-more-days": function(event) {
+        var button = event.currentTarget;
+        button.classList.add("loading");
         Session.set("dayCount", Session.get("dayCount") + 10);
+        setTimeout(function() {
+            button.classList.remove("loading");
+        }, 1000);
     },
 
     "click .btn-enable": function(event) {
@@ -181,10 +133,11 @@ Template.calendar.events({
     },
 
     "click .btn-day": function(event) {
-        var date = event.currentTarget.parentNode.parentNode.attributes["data-date"].value;
-        Session.set("modalDate", date);
-        var day = moment(date).format("dddd D[.]M[.]YYYY");
-        $("#msg-modal-day").text(day);
-        $("#msg-modal").modal("show");
+        var button = event.currentTarget;
+        button.classList.add("loading");
+        var date = button.parentNode.parentNode.attributes["data-date"].value;
+        Session.set("notesDate", date);
+        Router.go("notes");
+        button.classList.remove("loading");
     }
 });

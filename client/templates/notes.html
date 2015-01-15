@@ -1,0 +1,45 @@
+<template name="notes">
+{{>menu}}
+<div class="ui page grid">
+<div class="ui column">
+    <div class="header">
+        <h2>
+            {{notesDay}}
+        </h2>
+    </div>
+    <div class="content">
+        <div class="ui stacked segment">
+            <div class="ui form">
+                <div class="ui fluid field">
+                    <textarea id="frm-note"></textarea>
+                </div>
+                <div class="align-right">
+                    <button class="positive ui button" id="btn-save-note"><i class="save icon"></i>Uložit poznámku</button>
+                </div>
+            </div>
+        </div>
+        {{#each notesForDay}}
+        <div class="ui {{noteNameColor user}} segment chat-message">
+            <div class="header">
+                <div class="ui left {{noteNameColor user}} label">
+                    {{noteName user}}
+                    <div class="detail">{{date timestamp}}</div>
+                </div>
+                {{#if isMyNote user}}
+                <div class="message-edit-buttons">
+                    <button data-note="{{_id}}" class="ui icon small negative button btn-remove-note">
+                    <i class="trash icon"></i>
+                    <span class="wide-only">Smazat</span>
+                    </button>
+                </div>
+                {{/if}}
+            </div>
+            <div class="text">
+                {{#markdown}}{{text}}{{/markdown}}
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+</div>
+</template>
