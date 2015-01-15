@@ -1,6 +1,7 @@
 requireLogin = function() {
     if (!Meteor.userId()) {
         Router.go('login');
+        pause();
     }
 }
 
