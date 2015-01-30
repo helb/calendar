@@ -8,7 +8,6 @@ meteor-platform
 autopublish
 accounts-password
 useraccounts:semantic-ui
-fourseven:scss
 iron:router
 accounts-ui
 aldeed:simple-schema
@@ -19,3 +18,4 @@ mizzao:timesync
 nooitaf:semantic-ui
 meteorhacks:kadira
 reywood:iron-router-ga
+stevezhu:sass
