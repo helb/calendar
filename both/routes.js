@@ -5,6 +5,10 @@ requireLogin = function() {
     }
 }
 
+Router.configure({
+    trackPageView: true
+});
+
 Router.route('/login', function() {
     this.render('login');
 });
