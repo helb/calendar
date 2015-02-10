@@ -5,6 +5,11 @@
         <nav class="login-form">
             {{> atForm state='changePwd'}}
         </nav>
+        <div class="ui large fluid segment">
+            <h2 class="ui center aligned dividing header">Kalendář</h2>
+                <input type="checkbox" id="check-calendar" class="{{#if userHasCalendar _id}} checked{{/if}}">
+                <label for="check-calendar">Zobrazit můj sloupec v kalendáři</label>
+        </div>
     </div>
     <div class="ui eight wide column">
         {{#with currentUser}}
@@ -21,11 +26,6 @@
                 <button class="ui red button btn-change-color">{{currentUser.profile.name}}</button>
                 <button class="ui pink button btn-change-color">{{currentUser.profile.name}}</button>
                 <button class="ui youtube button btn-change-color">{{currentUser.profile.name}}</button>
-        </div>
-        <div class="ui large fluid segment">
-            <h2 class="ui center aligned dividing header">Kalendář</h2>
-                <input type="checkbox" id="check-calendar" class="{{#if userHasCalendar _id}} checked{{/if}}">
-                <label for="check-calendar">Zobrazit můj sloupec v kalendáři</label>
         </div>
         {{/with}}
     </div>
