@@ -13,14 +13,18 @@ Template.user_settings.rendered = function() {
 
 Template.user_settings.events({
     'click .btn-change-color': function(event) {
-        var newColor = event.currentTarget.classList[1];
+    	var button = event.currentTarget;
+	button.classList.add("loading");
+        var newColor = button.classList[1];
         Meteor.users.update({
             _id:  Meteor.user()._id
         }, {
             $set: {
                 "profile.color": newColor
             }
-        });
+        }, function(){
+	    button.classList.remove("loading");
+	});
     },
     'change #check-calendar': function(event) {
         var isChecked = event.currentTarget.checked;
